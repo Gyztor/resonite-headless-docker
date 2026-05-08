@@ -17,7 +17,7 @@ if [ ! "${BETA_CODE}" = "" ]; then
 fi
 
 
-/home/container/steamcmd/steamcmd.sh +login ${STEAM_USER} ${STEAM_PASS} +@sSteamCmdForcePlatformType windows +force_install_dir /home/container +app_license_request 2519830 +app_update 2519830 -beta ${STEAM_BRANCH} ${STEAMCMD_BETA_PASSWORD} validate +quit
+/home/container/steamcmd/steamcmd.sh +login ${STEAM_USER} ${STEAM_PASS} +force_install_dir /home/container +app_license_request 2519830 +app_update 2519830 -beta ${STEAM_BRANCH} ${STEAMCMD_BETA_PASSWORD} validate +quit
 
 #Mod installation if ENABLE_MODS is true. Heavily inspired and pulled from work by Spex. Thank you
 if [ "${ENABLE_MODS}" = "true" ]; then
@@ -93,6 +93,12 @@ fi
     if [ "${MOD_HeadlessUserCulling}" = "true" ]; then
       echo "Installing HeadlessUserCulling"
       curl -SslL https://codeberg.org/Raidriar/HeadlessUserCulling/releases/download/latest/HeadlessUserCulling.dll -o ${HEADLESS_DIRECTORY}/rml_mods/HeadlessUserCulling.dll
+    fi
+	
+	#SqueezeEmIn
+    if [ "${MOD_SqueezEmIn}" = "true" ]; then
+      echo "Installing SqueezEmIn"
+      curl -SslL https://github.com/noblereign/ResoniteSqueezeEmIn/releases/download/latest/SqueezeEmIn-Headless.dll -o ${HEADLESS_DIRECTORY}/rml_mods/SqueezeEmIn-Headless.dll
     fi
 
   fi
